@@ -1,0 +1,12 @@
+name: 'Run Application test'
+description: 'Run test'
+inputs:
+  enviroments: 
+    description: 'Enviroment for usage'
+    required: true
+
+runs:
+    using: composite
+    steps:
+      - run: echo "test to ${{ inputs.enviroments }}"
+        shell: cmd

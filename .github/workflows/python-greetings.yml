@@ -35,8 +35,6 @@ jobs:
       - uses: ./.github/actions/test
         with:
           enviroments: "DEV"
-      - name: Print step name
-        run: echo "Testing DEV in this step"
 
   deploy-to-stg:
     runs-on: self-hosted
@@ -80,7 +78,7 @@ jobs:
         with:
           enviroments: "PRD"
           ports: 7004
-          
+
   test-on-prd: 
     runs-on: self-hosted
     needs: deploy-to-prd

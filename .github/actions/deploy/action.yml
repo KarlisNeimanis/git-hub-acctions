@@ -1,0 +1,17 @@
+name: 'Deploy Application/Service'
+description: 'Deploy service'
+inputs:
+  enviroments: 
+    description: 'Enviroment for usage'
+    required: true
+  ports: 
+    required: true
+runs:
+    using: composite
+    steps:
+      - uses: action/checkout@6
+      - run: echo "deployment to ${{ inputs.enviroments }}"
+        shell: bash
+      - name: install dependences
+        run: npm install
+        shell: bash

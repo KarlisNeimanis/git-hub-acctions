@@ -13,13 +13,13 @@ runs:
         with: 
           repository: "mtararujs/python-greetings"
           clean: 'false'
-          path: 'e2e-api'
+          path: 'e2e-api-deploy'
       - name: delete existing
-        working-directory: ./e2e-api
+        working-directory: ./e2e-api-deploy
         run: pm2 delete greetings-app-${{ inputs.enviroments }} & EXIT /B 0
         shell: cmd
 
       - name: start new pm2
-        working-directory: ./e2e-api
+        working-directory: ./e2e-api-deploy
         run: pm2 start app.py --name greetings-app-${{ inputs.enviroments }} --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${{ inputs.ports }}
         shell: cmd

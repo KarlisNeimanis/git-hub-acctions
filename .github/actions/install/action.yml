@@ -12,17 +12,17 @@ runs:
         with: 
           repository: "mtararujs/python-greetings"
           clean: 'false'
-          path: 'e2e-api'
+          path: 'e2e-api-install'
       - name: Install on
         run: echo "Install to ${{ inputs.enviroments }}"
         shell: cmd
 
       - name: Create Enviroment
-        working-directory: ./e2e-api
+        working-directory: ./e2e-api-install
         run: python3 -m venv venv
         shell: cmd
 
       - name: activate enviroment
-        working-directory: ./e2e-api
+        working-directory: ./e2e-api/install  
         run: venv\Scripts\pip install -r requirements.txt
         shell: cmd

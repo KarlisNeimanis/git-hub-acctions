@@ -23,6 +23,6 @@ runs:
         shell: cmd
 
       - name: activate enviroment
-        working-directory: ./e2e-api/install  
+        working-directory: ./e2e-api-install  
         run: venv\Scripts\pip install -r requirements.txt
         shell: cmd

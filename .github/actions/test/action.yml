@@ -25,5 +25,8 @@ runs:
 
       - name: run
         working-directory: ./e2e-api-test
-        run: npm run greetings -- greetings_${{ inputs.environments }}
+        run: npm run greetings
         shell: cmd
+        env:
+          ENV: ${{ inputs.environments }}
+ 

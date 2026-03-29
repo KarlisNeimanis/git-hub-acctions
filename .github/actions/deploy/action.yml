@@ -10,5 +10,14 @@ runs:
     using: composite
     steps:
       - uses: actions/checkout@v6
-      - run: echo "deployment to ${{ inputs.enviroments }}"
+        with: 
+          repository: "mtararujs/python-greetings"
+          clean: 'false'
+          path: 'e2e-api'
+      - name: delete existing
+        run: pm2 delete greetings-app-${inputs.environment} || exit 0
+        shell: cmd
+
+      - name: start new pm2
+        run: pm2 start app.py -n \"greetings-app-${inputs.environment}\" --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${inputs.port}
         shell: cmd

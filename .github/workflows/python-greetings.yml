@@ -18,8 +18,8 @@ jobs:
     steps: 
       - uses: ./.github/actions/deploy
         with:
-          enviroment: "DEV"
-          port: 7001
+          enviroments: "DEV"
+          ports: 7001
   test-on-dev: 
     runs-on: self-hosted
     needs: deploy-to-dev
@@ -33,8 +33,8 @@ jobs:
     steps: 
       - uses: ./.github/actions/deploy
         with:
-          enviroment: "STG"
-          port: 7002
+          enviroments: "STG"
+          ports: 7002
   test-on-stg:
     runs-on: self-hosted
     needs: deploy-to-stg
@@ -48,8 +48,8 @@ jobs:
     steps: 
       - uses: ./.github/actions/deploy
         with:
-          enviroment: "PREPROD"
-          port: 7003
+          enviroments: "PREPROD"
+          ports: 7003
   test-on-preprod:
     runs-on: self-hosted
     needs: deploy-to-preprod
@@ -63,8 +63,8 @@ jobs:
     steps: 
       - uses: ./.github/actions/deploy
         with:
-          enviroment: "PRD"
-          port: 7004
+          enviroments: "PRD"
+          ports: 7004
   test-on-prd: 
     runs-on: self-hosted
     needs: deploy-to-prd

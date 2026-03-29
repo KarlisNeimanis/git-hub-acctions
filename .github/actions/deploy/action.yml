@@ -21,5 +21,6 @@ runs:
 
       - name: start new pm2
         working-directory: ./e2e-api-deploy
-        run: pm2 start app.py --name greetings-app-${{ inputs.enviroments }} --interpreter python -- --port ${{ inputs.ports }}
+        ##run: pm2 start app.py --name greetings-app-${{ inputs.enviroments }} --interpreter python -- --port ${{ inputs.ports }}
+        run: pm2 start app.py --name greetings-app-${{ inputs.enviroments }} --interpreter \venv\bin\python -- --port 4000
         shell: cmd

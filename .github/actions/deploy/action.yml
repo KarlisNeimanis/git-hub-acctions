@@ -15,11 +15,11 @@ runs:
           clean: 'false'
           path: 'e2e-api'
       - name: delete existing
-        working-directory: e2e-api
+        working-directory: ./e2e-api
         run: pm2 delete greetings-app-${{ inputs.environment }} || exit 0
         shell: cmd
 
       - name: start new pm2
-        working-directory: e2e-api
+        working-directory: ./e2e-api
         run: pm2 start app.py \"greetings-app-${{ inputs.environment }}\" --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${{ inputs.port }}
         shell: cmd

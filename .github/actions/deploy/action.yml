@@ -12,7 +12,7 @@ runs:
       - uses: actions/checkout@v6
         with: 
           repository: "mtararujs/python-greetings"
-          clean: 'false'
+          clean: false
           path: 'e2e-api-deploy'
       - name: delete existing
         working-directory: ./e2e-api-deploy

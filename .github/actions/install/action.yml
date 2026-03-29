@@ -11,7 +11,7 @@ runs:
       - uses: actions/checkout@v6
         with: 
           repository: "mtararujs/python-greetings"
-          clean: 'false'
+          clean: false
           path: 'e2e-api-install'
       - name: Install on
         run: echo "Install to ${{ inputs.enviroments }}"

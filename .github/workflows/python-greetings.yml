@@ -48,8 +48,9 @@ jobs:
     needs: deploy-to-stg
     steps: 
       - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Testing STG in this step"
+      - uses: ./.github/actions/test
+        with:
+          environments: "STG"
 
   deploy-to-preprod: 
     runs-on: self-hosted
@@ -66,8 +67,9 @@ jobs:
     needs: deploy-to-preprod
     steps: 
       - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Testing PREPROD in this step"
+      - uses: ./.github/actions/test
+        with:
+          environments: "PREPROD"
 
   deploy-to-prd:
     runs-on: self-hosted
@@ -84,5 +86,6 @@ jobs:
     needs: deploy-to-prd
     steps: 
       - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Testing PRD in this step"
+      - uses: ./.github/actions/test
+        with:
+          environments: "PRD"

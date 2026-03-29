@@ -14,6 +14,7 @@ jobs:
         with: 
           repository: "mtararujs/python-greetings"
           clean: false 
+          enviroments: "DEV"
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
   deploy-to-dev:

@@ -26,7 +26,7 @@ jobs:
     steps: 
       - uses: ./.github/actions/test
         with:
-          envirments: "DEV"
+          enviroments: "DEV"
       - name: Print step name
         run: echo "Testing DEV in this step"
   deploy-to-stg:

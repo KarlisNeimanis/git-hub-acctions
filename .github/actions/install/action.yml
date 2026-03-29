@@ -21,3 +21,8 @@ runs:
         working-directory: ./e2e-api
         run: python3 -m venv venv
         shell: cmd
+
+      - name: Install enviroment
+        working-directory: ./e2e-api
+        run: ./venv/bin/python -m pip install -r requirements.txt
+        shell: cmd

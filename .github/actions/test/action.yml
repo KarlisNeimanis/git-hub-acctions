@@ -10,8 +10,20 @@ runs:
     steps:
       - uses: actions/checkout@v6
         with: 
-          repository: "mtararujs/python-greetings"
+          repository: "mtararujs/course-js-api-framework"
           clean: 'false'
           path: 'e2e-api-test'
-      - run: echo "test to ${{ inputs.environments }}"
+
+      - name: Test ${{ inputs.environments }}
+        run: echo "test to ${{ inputs.environments }}"
+        shell: cmd
+
+      - name: npm install
+        working-directory: ./e2e-api-test
+        run: npm install
+        shell: cmd
+
+      - name: run
+        working-directory: ./e2e-api-test
+        run: npm run greetings greetings_${{ inputs.environments }}
         shell: cmd

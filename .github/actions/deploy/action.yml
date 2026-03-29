@@ -14,6 +14,11 @@ runs:
           repository: "mtararujs/python-greetings"
           clean: 'false'
           path: 'e2e-api-deploy'
+
+      - name: start deploy
+        run: echo "Deploy ${{ inputs.environments}}"
+        shell: cmd
+
       - name: delete existing
         working-directory: ./e2e-api-deploy
         run: pm2 delete greetings-app-${{ inputs.environments }} & EXIT /B 0

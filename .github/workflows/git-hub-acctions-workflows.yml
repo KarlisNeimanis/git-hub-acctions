@@ -6,58 +6,66 @@ on:
   Workflow_dispatch:
 
 jobs: 
-  build-install-deps:
+  install-pip-deps:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
       - name: List all files
-        run: ls
-  deploy-dev:
+        run: ls 
+  deploy-to-dev:
     runs-on: ubuntu-latest
+    needs: install-pip-deps
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Deployment to DEV enviroment has started.."
-  test-dev: 
+  test-on-dev: 
     runs-on: ubuntu-latest
+    needs: deploy-to-dev
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Testing in this step"
-  build-install-stg:
+  deploy-to-stg:
     runs-on: ubuntu-latest
+    needs: test-on-dev
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
-  deploy-stg:
+  test-on-stg:
     runs-on: ubuntu-latest
+    needs: deploy-to-stg
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Deployment to STG enviroment has started.."
-  test-stg: 
+  deploy-to-preprod: 
     runs-on: ubuntu-latest
+    needs: test-on-stg
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Testing in this step"
-  build-install-prd:
+  test-on-preprod:
     runs-on: ubuntu-latest
+    needs: deploy-to-preprod
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
-  deploy-prd:
+  deploy-to-prd:
     runs-on: ubuntu-latest
+    needs: test-on-preprod
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Deployment to PRD enviroment has started.."
-  test-prd: 
+  test-on-prd: 
     runs-on: ubuntu-latest
+    needs: deploy-to-prd
     steps: 
       - uses: actions/checkout@v6
       - name: Print step name

@@ -19,7 +19,7 @@ jobs:
       - uses: ./.github/actions/deploy
         with:
           enviroment: "DEV"
-          port: 1010
+          port: 7001
   test-on-dev: 
     runs-on: self-hosted
     needs: deploy-to-dev
@@ -31,9 +31,10 @@ jobs:
     runs-on: self-hosted
     needs: test-on-dev
     steps: 
-      - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Deployment to STG enviroment"
+      - uses: ./.github/actions/deploy
+        with:
+          enviroment: "STG"
+          port: 7002
   test-on-stg:
     runs-on: self-hosted
     needs: deploy-to-stg
@@ -45,9 +46,10 @@ jobs:
     runs-on: self-hosted
     needs: test-on-stg
     steps: 
-      - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Deployment to PREPROD enviroment"
+      - uses: ./.github/actions/deploy
+        with:
+          enviroment: "PREPROD"
+          port: 7003
   test-on-preprod:
     runs-on: self-hosted
     needs: deploy-to-preprod
@@ -59,9 +61,10 @@ jobs:
     runs-on: self-hosted
     needs: test-on-preprod
     steps: 
-      - uses: actions/checkout@v6
-      - name: Print step name
-        run: echo "Deployment to PRD"
+      - uses: ./.github/actions/deploy
+        with:
+          enviroment: "PRD"
+          port: 7004
   test-on-prd: 
     runs-on: self-hosted
     needs: deploy-to-prd

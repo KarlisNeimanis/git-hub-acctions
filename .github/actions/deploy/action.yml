@@ -12,6 +12,3 @@ runs:
       - uses: actions/checkout@v6
       - run: echo "deployment to ${{ inputs.enviroments }}"
         shell: cmd
-      - name: install dependences
-        run: npm install
-        shell: cmd

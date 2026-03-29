@@ -17,6 +17,7 @@ jobs:
           enviroments: "DEV"
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
+
   deploy-to-dev:
     runs-on: self-hosted
     needs: install-pip-deps
@@ -25,6 +26,7 @@ jobs:
         with:
           enviroments: "DEV"
           ports: 7001
+
   test-on-dev: 
     runs-on: self-hosted
     needs: deploy-to-dev
@@ -35,6 +37,7 @@ jobs:
           enviroments: "DEV"
       - name: Print step name
         run: echo "Testing DEV in this step"
+
   deploy-to-stg:
     runs-on: self-hosted
     needs: test-on-dev
@@ -43,6 +46,7 @@ jobs:
         with:
           enviroments: "STG"
           ports: 7002
+
   test-on-stg:
     runs-on: self-hosted
     needs: deploy-to-stg
@@ -50,6 +54,7 @@ jobs:
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Testing STG in this step"
+
   deploy-to-preprod: 
     runs-on: self-hosted
     needs: test-on-stg
@@ -58,6 +63,7 @@ jobs:
         with:
           enviroments: "PREPROD"
           ports: 7003
+
   test-on-preprod:
     runs-on: self-hosted
     needs: deploy-to-preprod
@@ -65,6 +71,7 @@ jobs:
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Testing PREPROD in this step"
+
   deploy-to-prd:
     runs-on: self-hosted
     needs: test-on-preprod
@@ -73,6 +80,7 @@ jobs:
         with:
           enviroments: "PRD"
           ports: 7004
+          
   test-on-prd: 
     runs-on: self-hosted
     needs: deploy-to-prd

@@ -16,6 +16,7 @@ jobs:
     runs-on: self-hosted
     needs: install-pip-deps
     steps: 
+      - uses: action/checkout@6
       - uses: ./.github/actions/deploy
         with:
           enviroment: "DEV"

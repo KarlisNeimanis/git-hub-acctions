@@ -24,10 +24,5 @@ runs:
 
       - name: activate enviroment
         working-directory: ./e2e-api
-        run: venv\Scripts\activate
-        shell: cmd
-
-      - name: install dependences
-        working-directory: ./e2e-api
-        run: pip install -r requirements.txt
+        run: venv\Scripts\pip install -r requirements.txt
         shell: cmd

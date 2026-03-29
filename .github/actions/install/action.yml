@@ -12,7 +12,7 @@ runs:
         with: 
           repository: "mtararujs/python-greetings"
           clean: 'false'
-          path: 'e2e-api/venv'
+          path: 'e2e-api'
       - name: Install on
         run: echo "Install to ${{ inputs.enviroments }}"
         shell: cmd

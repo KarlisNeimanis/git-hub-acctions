@@ -8,5 +8,16 @@ inputs:
 runs:
     using: composite
     steps:
-      - run: echo "test to ${{ inputs.enviroments }}"
+      - uses: actions/checkout@v6
+        with: 
+          repository: "mtararujs/python-greetings"
+          clean: 'false'
+          path: 'e2e-api'
+      - name: Install on
+        run: echo "Install to ${{ inputs.enviroments }}"
+        shell: cmd
+
+      - name: Create Enviroment
+        working-directory: ./e2e-api
+        run: python3 -m venv venv
         shell: cmd

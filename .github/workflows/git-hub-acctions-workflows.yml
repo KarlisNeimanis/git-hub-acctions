@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v6
       - name: Print step name
         run: echo "Installing all necessary node dependencies.."
-      - name: List all files
-        run: ls 
+      - name: install all dependencies
+        run: npm install
   deploy-to-dev:
     runs-on: self-hosted
     needs: install-pip-deps

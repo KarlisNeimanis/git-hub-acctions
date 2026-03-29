@@ -1,0 +1,15 @@
+name: 'Run Application test'
+description: 'Run test'
+inputs:
+  enviroments: 
+    description: 'Enviroment for usage'
+    required: true
+
+runs:
+    using: composite
+    steps:
+      - uses: actions/checkout@v6
+        with: 
+          repository: "mtararujs/python-greetings"
+      - run: echo "test to ${{ inputs.enviroments }}"
+        shell: cmd

@@ -1,7 +1,7 @@
 name: 'Deploy Application/Service'
 description: 'Deploy service'
 inputs:
-  enviroments: 
+  environments: 
     description: 'Enviroment for usage'
     required: true
   ports: 
@@ -16,11 +16,12 @@ runs:
           path: 'e2e-api-deploy'
       - name: delete existing
         working-directory: ./e2e-api-deploy
-        run: pm2 delete greetings-app-${{ inputs.enviroments }} & EXIT /B 0
+        run: pm2 delete greetings-app-${{ inputs.environments }} & EXIT /B 0
         shell: cmd
 
       - name: start new pm2
         working-directory: ./e2e-api-deploy
-        ##run: pm2 start app.py --name greetings-app-${{ inputs.enviroments }} --interpreter python -- --port ${{ inputs.ports }}
-        run: pm2 start app.py -n greetings-app-${{ inputs.enviroments }} --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${{ inputs.ports }}
+        ##run: pm2 start app.py --name greetings-app-${{ inputs.environments }} --interpreter python -- --port ${{ inputs.ports }}
+        ##run: pm2 start app.py -n greetings-app-${{ inputs.environments }} --interpreter %CD%\\venv\\Scripts\\python.exe -- --port ${{ inputs.ports }}
+        run: pm2 start app.py - n greetings-app-${{ inputs.environments }} --interpreter C:\shared\venvs\greetings\Scripts\python.exe -- --port ${{ inputs.ports }}
         shell: cmd

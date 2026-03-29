@@ -1,7 +1,7 @@
 name: 'Run Application test'
 description: 'Run test'
 inputs:
-  enviroments: 
+  environments: 
     description: 'Enviroment for usage'
     required: true
 
@@ -14,15 +14,15 @@ runs:
           clean: 'false'
           path: 'e2e-api-install'
       - name: Install on
-        run: echo "Install to ${{ inputs.enviroments }}"
+        run: echo "Install to ${{ inputs.environments }}"
         shell: cmd
 
       - name: Create Enviroment
         working-directory: ./e2e-api-install
-        run: python -m venv venv
+        run: python -m venv C:\shared\venvs\greetings
         shell: cmd
 
       - name: activate enviroment
         working-directory: ./e2e-api-install  
-        run:  venv\Scripts\python.exe -m pip install -r requirements.txt
+        run:  C:\shared\venvs\greetings\Scripts\python.exe -m pip install -r requirements.txt
         shell: cmd

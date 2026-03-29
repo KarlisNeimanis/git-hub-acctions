@@ -1,7 +1,7 @@
 name: 'Run Application test'
 description: 'Run test'
 inputs:
-  enviroments: 
+  environments: 
     description: 'Enviroment for usage'
     required: true
 
@@ -13,5 +13,5 @@ runs:
           repository: "mtararujs/python-greetings"
           clean: 'false'
           path: 'e2e-api-test'
-      - run: echo "test to ${{ inputs.enviroments }}"
+      - run: echo "test to ${{ inputs.environments }}"
         shell: cmd

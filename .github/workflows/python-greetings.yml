@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/install
         with:
-          enviroments: "DEV"
+          environments: "DEV"
 
   deploy-to-dev:
     runs-on: self-hosted
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/deploy
         with:
-          enviroments: "DEV"
+          environments: "DEV"
           ports: 7001
 
   test-on-dev: 
@@ -31,15 +31,16 @@ jobs:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/test
         with:
-          enviroments: "DEV"
+          environments: "DEV"
 
   deploy-to-stg:
     runs-on: self-hosted
     needs: test-on-dev
     steps: 
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/deploy
         with:
-          enviroments: "STG"
+          environments: "STG"
           ports: 7002
 
   test-on-stg:
@@ -54,9 +55,10 @@ jobs:
     runs-on: self-hosted
     needs: test-on-stg
     steps: 
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/deploy
         with:
-          enviroments: "PREPROD"
+          environments: "PREPROD"
           ports: 7003
 
   test-on-preprod:
@@ -71,9 +73,10 @@ jobs:
     runs-on: self-hosted
     needs: test-on-preprod
     steps: 
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/deploy
         with:
-          enviroments: "PRD"
+          environments: "PRD"
           ports: 7004
 
   test-on-prd: 

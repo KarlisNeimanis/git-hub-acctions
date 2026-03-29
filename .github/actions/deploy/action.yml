@@ -16,7 +16,7 @@ runs:
           path: 'e2e-api'
       - name: delete existing
         working-directory: ./e2e-api
-        run: pm2 delete greetings-app-${{ inputs.enviroments }} || exit 0
+        run: pm2 delete greetings-app-${{ inputs.enviroments }} & EXIT /B 0
         shell: cmd
 
       - name: start new pm2
